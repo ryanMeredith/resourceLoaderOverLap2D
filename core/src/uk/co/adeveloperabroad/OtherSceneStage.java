@@ -3,6 +3,7 @@ package uk.co.adeveloperabroad;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.uwsoft.editor.renderer.SceneLoader;
@@ -10,23 +11,27 @@ import com.uwsoft.editor.renderer.SceneLoader;
 /**
  * Created by snow on 28/01/16.
  */
-public class MainSceneStage extends Stage {
+public class OtherSceneStage extends Stage {
 
     SceneLoader sceneLoader;
     Viewport viewport;
 
-    MainSceneStage(SceneLoader sceneLoader, Viewport viewport, Batch spriteBatch){
-        super(viewport, spriteBatch);
+    OtherSceneStage(SceneLoader sceneLoader, Viewport viewport, Batch batch){
+        super(viewport, batch);
         this.sceneLoader = sceneLoader;
         this.viewport = viewport;
-        sceneLoader.loadScene("MainScene", viewport);
+
+        sceneLoader.loadScene("OtherScene", viewport);
+
     }
+
+
 
     @Override
     public void act(float delta) {
         super.act(delta);
 
-        sceneLoader.getEngine().update(Gdx.graphics.getDeltaTime());
+        sceneLoader.getEngine().update(delta);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
