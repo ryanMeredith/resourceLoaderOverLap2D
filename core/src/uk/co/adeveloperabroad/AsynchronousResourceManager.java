@@ -1,5 +1,6 @@
 package uk.co.adeveloperabroad;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.uwsoft.editor.renderer.resources.ResourceManager;
@@ -50,6 +51,19 @@ public class AsynchronousResourceManager extends ResourceManager {
         }
     }
 
+    public void loadSpriteAnimation(String animationName) {
+        setLoadingFlag();
+        //empty existing ones that are not scheduled to load
+        spriteAnimNamesToLoad.add(animationName);
+
+        for (String name : spriteAnimNamesToLoad) {
+            assetManager.load(packResolutionName + File.separator
+                    + spriteAnimationsPath + File.separator +
+                    name + File.separator + name + ".atlas", TextureAtlas.class);
+        }
+    }
+
+
     public void setLoadingFlag() {
         isCurrentlyLoading = true;
         loadedAtStart = assetManager.getLoadedAssets();
@@ -76,6 +90,14 @@ public class AsynchronousResourceManager extends ResourceManager {
 
         if (mainPack == null) {
             mainPack = assetManager.get(packResolutionName + File.separator + "pack.atlas", TextureAtlas.class);
+        }
+
+        for (String name : spriteAnimNamesToLoad) {
+            TextureAtlas animAtlas = assetManager.get(packResolutionName +
+                    File.separator + spriteAnimationsPath + File.separator +
+                    name + File.separator + name +
+                    ".atlas", TextureAtlas.class);
+            spriteAnimations.put(name, animAtlas);
         }
 
         isCurrentlyLoading = false;

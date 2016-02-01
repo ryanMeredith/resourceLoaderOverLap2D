@@ -88,6 +88,7 @@ public class MainClass extends Game implements Telegraph {
             uiStage.addAction(Actions.alpha(0));
             uiStage.addAction(Actions.fadeIn(10));
             splashScreen.dispose();
+            rm.loadSpriteAnimation("head");
             loaded = true;
         }
     }
