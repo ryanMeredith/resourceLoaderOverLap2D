@@ -4,9 +4,23 @@ size: 512,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-voyager2
+greenFoot
+  rotate: false
+  xy: 341, 407
+  size: 89, 80
+  orig: 89, 80
+  offset: 0, 0
+  index: -1
+greenFootTrans
   rotate: false
   xy: 2, 75
+  size: 89, 80
+  orig: 89, 80
+  offset: 0, 0
+  index: -1
+voyager2
+  rotate: false
+  xy: 2, 157
   size: 337, 330
   orig: 337, 330
   offset: 0, 0

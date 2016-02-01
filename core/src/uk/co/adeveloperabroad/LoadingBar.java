@@ -19,6 +19,7 @@ public class LoadingBar {
         this.camera = camera;
         shape = new ShapeRenderer();
         ShaderProgram.pedantic = false;
+
     }
 
     public void renderProgressBar() {
@@ -39,6 +40,10 @@ public class LoadingBar {
 
     }
 
+    public void dispose() {
+        shape.dispose();
+
+    }
 
 
 }
